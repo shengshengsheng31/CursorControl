@@ -119,6 +119,12 @@ namespace CursorControl
         {
             if (chkHotKey.Checked)
             {
+                if (txtHotKey.Text == "")
+                {
+                    MessageBox.Show("输入快捷键");
+                    chkHotKey.Checked = false;
+                    return;
+                }
                 txtHotKey.Enabled = false;
                 SetHotKey(hotKey);
             }
