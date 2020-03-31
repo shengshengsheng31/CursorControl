@@ -28,6 +28,11 @@ namespace CursorControl
             InitializeComponent();
             timer.Interval = 1000;
             timer.Tick += new EventHandler(TimerMission);
+        }
+
+        //窗口加载
+        private void frmMain_Load(object sender, EventArgs e)
+        {
             this.lblCursor.Text = $"当前坐标：X-{p.X},Y-{p.Y}";
             this.lblExpendTime.Text = $"运行状态：{counter}";
             chkAuto.Checked = Settings.Default.IsAutoRun;
@@ -39,7 +44,10 @@ namespace CursorControl
                 txtHotKey.Enabled = false;
                 txtHotKey.Text = hotKey.ToString();
             }
-            
+            if (chkAuto.Checked)
+            {
+                this.btnRun.PerformClick();
+            }
         }
 
         //运行按钮
@@ -108,6 +116,7 @@ namespace CursorControl
                 return;
             }
         }
+
         //设置快捷键文本
         private void txtHotKey_KeyDown(object sender, KeyEventArgs e)
         {
@@ -123,6 +132,7 @@ namespace CursorControl
                 {
                     MessageBox.Show("输入快捷键");
                     chkHotKey.Checked = false;
+                    txtHotKey.Focus();
                     return;
                 }
                 txtHotKey.Enabled = false;
