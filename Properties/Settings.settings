@@ -11,5 +11,14 @@
     <Setting Name="HotKey" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">None</Value>
     </Setting>
+    <Setting Name="IsSetTime" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="dtpEndTimeData" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">03/31/2020 13:39:00</Value>
+    </Setting>
+    <Setting Name="dtpStartTimeData" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">03/31/2020 11:39:00</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

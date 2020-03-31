@@ -58,5 +58,41 @@ namespace CursorControl.Properties {
                 this["HotKey"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsSetTime {
+            get {
+                return ((bool)(this["IsSetTime"]));
+            }
+            set {
+                this["IsSetTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("03/31/2020 13:39:00")]
+        public global::System.DateTime dtpEndTimeData {
+            get {
+                return ((global::System.DateTime)(this["dtpEndTimeData"]));
+            }
+            set {
+                this["dtpEndTimeData"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("03/31/2020 11:39:00")]
+        public global::System.DateTime dtpStartTimeData {
+            get {
+                return ((global::System.DateTime)(this["dtpStartTimeData"]));
+            }
+            set {
+                this["dtpStartTimeData"] = value;
+            }
+        }
     }
 }

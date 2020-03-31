@@ -17,10 +17,13 @@ namespace CursorControl
     {
         #region 参数
         Timer timer = new Timer();
-        bool flag = true;
+        Timer controlTimer = new Timer();
+        bool flag = false;//按钮处于是否被点击的状态
         int counter = 0;
         CursorEntity.PONITAPI p = new CursorEntity.PONITAPI();
-        Keys hotKey ;
+        Keys hotKey;
+        DateTime timeStart;
+        DateTime timeEnd;
         #endregion
 
         public frmMain()
@@ -28,6 +31,8 @@ namespace CursorControl
             InitializeComponent();
             timer.Interval = 1000;
             timer.Tick += new EventHandler(TimerMission);
+            controlTimer.Interval = 1000;
+            controlTimer.Tick += new EventHandler(ControlTimer);
         }
 
         //窗口加载
@@ -38,6 +43,8 @@ namespace CursorControl
             chkAuto.Checked = Settings.Default.IsAutoRun;
             chkHotKey.Checked = Settings.Default.IsHot;
             hotKey = Settings.Default.HotKey;
+            dtpStart.Value = Settings.Default.dtpStartTimeData;
+            dtpEnd.Value = Settings.Default.dtpEndTimeData;
             if (chkHotKey.Checked)
             {
                 SetHotKey(hotKey);
@@ -48,6 +55,7 @@ namespace CursorControl
             {
                 this.btnRun.PerformClick();
             }
+            chkTime.Checked = Settings.Default.IsSetTime;
         }
 
         //运行按钮
@@ -55,15 +63,9 @@ namespace CursorControl
         {
             if (flag)
             {
-                timer.Start();
-                flag = !flag;
-                this.btnRun.Text  = "结束";
-                this.btnRun.BackColor = Color.FromArgb(250, 177, 160);
-            }
-            else
-            {
+                controlTimer.Stop();
                 timer.Stop();
-                flag = !flag;
+                flag = false;
                 counter = 0;
                 p.X = 0;
                 p.Y = 0;
@@ -71,7 +73,33 @@ namespace CursorControl
                 this.lblCursor.Text = $"当前坐标：X-{p.X},Y-{p.Y}";
                 this.btnRun.Text = "开始";
                 this.btnRun.BackColor = Color.Transparent;
+                chkTime.Enabled = true;
+                chkAuto.Enabled = true;
+                chkHotKey.Enabled = true;
+                txtHotKey.Enabled = true;
+                dtpStart.Enabled = true;
+                dtpEnd.Enabled = true;
                 MessageBox.Show("已停止");
+            }
+            else
+            {
+                if (chkTime.Checked)
+                {
+                    controlTimer.Start();
+                }
+                else
+                {
+                    timer.Start();
+                }
+                flag = true;
+                this.btnRun.Text = "结束";
+                this.btnRun.BackColor = Color.FromArgb(250, 177, 160);
+                chkTime.Enabled = false;
+                dtpStart.Enabled = false;
+                dtpEnd.Enabled = false;
+                chkAuto.Enabled = false;
+                chkHotKey.Enabled = false;
+                txtHotKey.Enabled = false;
             }
         }
 
@@ -145,6 +173,28 @@ namespace CursorControl
             }
             Settings.Default.HotKey = hotKey;
             Settings.Default.IsHot = chkHotKey.Checked;
+        }
+
+        //复选框启用定时
+        private void chkTime_Click(object sender, EventArgs e)
+        {
+            if (chkTime.Checked)
+            {
+                if (dtpStart.Value > dtpEnd.Value)
+                {
+                    MessageBox.Show("检查时间");
+                    chkTime.Checked = false;
+                    return;
+                }
+                timeStart = DateTime.Parse($"{dtpStart.Value.Hour}:{dtpStart.Value.Minute}:{dtpStart.Value.Second}");
+                timeEnd = DateTime.Parse($"{dtpEnd.Value.Hour}:{dtpEnd.Value.Minute}:{dtpEnd.Value.Second}");
+            }
+            else
+            {
+                dtpStart.Enabled = true;
+                dtpEnd.Enabled = true;
+            }
+            Settings.Default.IsSetTime = chkTime.Checked;
         }
 
         //通知栏退出
@@ -235,6 +285,36 @@ namespace CursorControl
             HotKeyEntity.RegisterHotKey(Handle, 102, HotKeyEntity.KeyModifiers.Alt, key);
         }
 
-        
+        /// <summary>
+        /// 检测定时任务控制计时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="arg"></param>
+        private void ControlTimer(object sender, EventArgs arg)
+        {
+            if (DateTime.Now > timeStart && DateTime.Now < timeEnd)
+            {
+                timer.Stop();
+                this.lblExpendTime.Text = $"运行状态：正在计划停止";
+            }
+            else
+            {
+                timer.Start();
+            }
+        }
+
+        private void dtpStart_ValueChanged(object sender, EventArgs e)
+        {
+            this.chkTime.Checked = false;
+            Settings.Default.dtpStartTimeData = dtpStart.Value;
+        }
+
+        private void dtpEnd_ValueChanged(object sender, EventArgs e)
+        {
+            this.chkTime.Checked = false;
+            Settings.Default.dtpEndTimeData = dtpEnd.Value;
+        }
     }
+
+    
 }

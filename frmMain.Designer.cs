@@ -40,6 +40,11 @@
             this.txtHotKey = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chkHotKey = new System.Windows.Forms.CheckBox();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
+            this.chkTime = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.cmsNotify.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +75,7 @@
             // lblExpendTime
             // 
             this.lblExpendTime.AutoSize = true;
-            this.lblExpendTime.Location = new System.Drawing.Point(83, 47);
+            this.lblExpendTime.Location = new System.Drawing.Point(232, 26);
             this.lblExpendTime.Name = "lblExpendTime";
             this.lblExpendTime.Size = new System.Drawing.Size(71, 12);
             this.lblExpendTime.TabIndex = 1;
@@ -102,7 +107,7 @@
             // chkAuto
             // 
             this.chkAuto.AutoSize = true;
-            this.chkAuto.Location = new System.Drawing.Point(83, 69);
+            this.chkAuto.Location = new System.Drawing.Point(83, 58);
             this.chkAuto.Name = "chkAuto";
             this.chkAuto.Size = new System.Drawing.Size(72, 16);
             this.chkAuto.TabIndex = 3;
@@ -113,7 +118,7 @@
             // txtHotKey
             // 
             this.txtHotKey.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.txtHotKey.Location = new System.Drawing.Point(147, 91);
+            this.txtHotKey.Location = new System.Drawing.Point(264, 56);
             this.txtHotKey.Name = "txtHotKey";
             this.txtHotKey.Size = new System.Drawing.Size(39, 21);
             this.txtHotKey.TabIndex = 4;
@@ -122,27 +127,82 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(106, 95);
+            this.label1.Location = new System.Drawing.Point(189, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 12);
+            this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Alt +";
+            this.label1.Text = "快捷键Alt +";
             // 
             // chkHotKey
             // 
             this.chkHotKey.AutoSize = true;
-            this.chkHotKey.Location = new System.Drawing.Point(83, 94);
+            this.chkHotKey.Location = new System.Drawing.Point(166, 59);
             this.chkHotKey.Name = "chkHotKey";
             this.chkHotKey.Size = new System.Drawing.Size(15, 14);
             this.chkHotKey.TabIndex = 6;
             this.chkHotKey.UseVisualStyleBackColor = true;
             this.chkHotKey.Click += new System.EventHandler(this.chkHotKey_Click);
             // 
+            // dtpStart
+            // 
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpStart.Location = new System.Drawing.Point(139, 89);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.ShowUpDown = true;
+            this.dtpStart.Size = new System.Drawing.Size(81, 21);
+            this.dtpStart.TabIndex = 7;
+            this.dtpStart.Value = new System.DateTime(2020, 3, 31, 11, 40, 0, 0);
+            this.dtpStart.ValueChanged += new System.EventHandler(this.dtpStart_ValueChanged);
+            // 
+            // dtpEnd
+            // 
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpEnd.Location = new System.Drawing.Point(243, 89);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.ShowUpDown = true;
+            this.dtpEnd.Size = new System.Drawing.Size(82, 21);
+            this.dtpEnd.TabIndex = 8;
+            this.dtpEnd.Value = new System.DateTime(2020, 3, 31, 12, 40, 0, 0);
+            this.dtpEnd.ValueChanged += new System.EventHandler(this.dtpEnd_ValueChanged);
+            // 
+            // chkTime
+            // 
+            this.chkTime.AutoSize = true;
+            this.chkTime.Location = new System.Drawing.Point(83, 92);
+            this.chkTime.Name = "chkTime";
+            this.chkTime.Size = new System.Drawing.Size(15, 14);
+            this.chkTime.TabIndex = 6;
+            this.chkTime.UseVisualStyleBackColor = true;
+            this.chkTime.Click += new System.EventHandler(this.chkTime_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(226, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(11, 12);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "~";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(104, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "暂停";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(228, 127);
+            this.ClientSize = new System.Drawing.Size(346, 122);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtpEnd);
+            this.Controls.Add(this.dtpStart);
+            this.Controls.Add(this.chkTime);
             this.Controls.Add(this.chkHotKey);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtHotKey);
@@ -176,6 +236,11 @@
         private System.Windows.Forms.TextBox txtHotKey;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkHotKey;
+        private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
+        private System.Windows.Forms.CheckBox chkTime;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
