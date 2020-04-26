@@ -43,8 +43,11 @@ namespace CursorControl
             chkAuto.Checked = Settings.Default.IsAutoRun;
             chkHotKey.Checked = Settings.Default.IsHot;
             hotKey = Settings.Default.HotKey;
-            dtpStart.Value = Settings.Default.dtpStartTimeData;
-            dtpEnd.Value = Settings.Default.dtpEndTimeData;
+            timeStart = Settings.Default.dtpStartTimeData;
+            timeEnd = Settings.Default.dtpEndTimeData;
+            dtpStart.Value = timeStart;
+            dtpEnd.Value = timeEnd;
+            chkTime.Checked = Settings.Default.IsSetTime;
             if (chkHotKey.Checked)
             {
                 SetHotKey(hotKey);
@@ -55,7 +58,7 @@ namespace CursorControl
             {
                 this.btnRun.PerformClick();
             }
-            chkTime.Checked = Settings.Default.IsSetTime;
+            
         }
 
         //运行按钮
@@ -292,10 +295,11 @@ namespace CursorControl
         /// <param name="arg"></param>
         private void ControlTimer(object sender, EventArgs arg)
         {
-            if (DateTime.Now > timeStart && DateTime.Now < timeEnd)
+            if (DateTime.Now.TimeOfDay > timeStart.TimeOfDay && DateTime.Now.TimeOfDay < timeEnd.TimeOfDay)
             {
                 timer.Stop();
-                this.lblExpendTime.Text = $"运行状态：正在计划停止";
+                this.lblExpendTime.Text = $"运行状态：计划停止";
+                this.lblCursor.Text = $"当前坐标：X-0,Y-0";
             }
             else
             {
@@ -303,12 +307,22 @@ namespace CursorControl
             }
         }
 
+        /// <summary>
+        /// 时间改变
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtpStart_ValueChanged(object sender, EventArgs e)
         {
             this.chkTime.Checked = false;
             Settings.Default.dtpStartTimeData = dtpStart.Value;
         }
 
+        /// <summary>
+        /// 时间改变
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtpEnd_ValueChanged(object sender, EventArgs e)
         {
             this.chkTime.Checked = false;
