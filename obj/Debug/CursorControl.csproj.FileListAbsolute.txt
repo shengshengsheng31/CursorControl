@@ -1,0 +1,15 @@
+E:\PersonalCode\CursorControl\bin\Debug\CursorControl.exe.config
+E:\PersonalCode\CursorControl\bin\Debug\CursorControl.exe.manifest
+E:\PersonalCode\CursorControl\bin\Debug\CursorControl.application
+E:\PersonalCode\CursorControl\bin\Debug\CursorControl.exe
+E:\PersonalCode\CursorControl\bin\Debug\CursorControl.pdb
+E:\PersonalCode\CursorControl\obj\Debug\CursorControl.csprojAssemblyReference.cache
+E:\PersonalCode\CursorControl\obj\Debug\CursorControl.frmMain.resources
+E:\PersonalCode\CursorControl\obj\Debug\CursorControl.Properties.Resources.resources
+E:\PersonalCode\CursorControl\obj\Debug\CursorControl.csproj.GenerateResource.cache
+E:\PersonalCode\CursorControl\obj\Debug\CursorControl.csproj.CoreCompileInputs.cache
+E:\PersonalCode\CursorControl\obj\Debug\CursorControl.TrustInfo.xml
+E:\PersonalCode\CursorControl\obj\Debug\CursorControl.exe.manifest
+E:\PersonalCode\CursorControl\obj\Debug\CursorControl.application
+E:\PersonalCode\CursorControl\obj\Debug\CursorControl.exe
+E:\PersonalCode\CursorControl\obj\Debug\CursorControl.pdb

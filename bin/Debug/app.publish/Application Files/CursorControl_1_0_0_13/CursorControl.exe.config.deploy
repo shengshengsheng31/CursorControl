@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="CursorControl.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+    <userSettings>
+        <CursorControl.Properties.Settings>
+            <setting name="IsAutoRun" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="IsHot" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="HotKey" serializeAs="String">
+                <value>None</value>
+            </setting>
+            <setting name="IsSetTime" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="dtpEndTimeData" serializeAs="String">
+                <value>03/31/2020 13:39:00</value>
+            </setting>
+            <setting name="dtpStartTimeData" serializeAs="String">
+                <value>03/31/2020 11:39:00</value>
+            </setting>
+        </CursorControl.Properties.Settings>
+    </userSettings>
+</configuration>
